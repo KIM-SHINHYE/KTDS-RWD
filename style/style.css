@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* 높이를 그냥 고정하면 스크롤 생기니까 최소한으로 주는거 */
+  min-height: 100vh;
+}
+.appHeader {
+  /* 순서 변경 가능, 렌더링할 때, 가장 하단에 배치, order의 기본은0, 0보다 크니까 가장 뒤에 배치*/
+  /* order: 1; */
+  height: 100px;
+}
+.appNavigation {
+  background-color: yellow;
+  height: 100px;
+}
+
+.appMain {
+  background-color: pink;
+  /* 나머지를 100px로 고정시킨만큼 나머지는 이 영역으로 가득차게 하고 싶음, 그러려면 부모요소의 높이가 지정되어야 함 */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* 줄바꿈을 하면 column처럼 효과 낼 수 있음 */
+  /* 위의 두 속성을 하나로 합칠 수 있음 */
+  flex-flow: row wrap;
+}
+
+/* 여기서 순서를 이렇게 했기때문에 아래 미디어 쿼리에 해당하지 않는 경우 아래와 같은 순서대로 정렬됨*/
+.book,
+.news,
+.board,
+.favorite,
+.twitter {
+  width: 100%;
+}
+
+.bookWrapper {
+}
+
+.appFooter {
+  background-color: lime;
+  /* 기본값인 0보다 앞이므로 앞에 배치 */
+  /* order: -1; */
+  height: 100px;
+}
+
+/* 너비 기준 설정 */
+/* 768px 태블릿기준 - 768이상 */
+@media (min-width: 768px) {
+  .bookWrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .book {
+    background-color: skyblue;
+    width: 30%;
+  }
+  .boardWrapper {
+    background-color: gray;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    /* width: 100%;*/
+  }
+  .board {
+    background-color: tomato;
+    order: 1;
+  }
+  .favoriteWrapper {
+    background-color: teal;
+    display: flex;
+    flex-direction: row;
+  }
+  .twitter {
+    order: -1;
+  }
+}

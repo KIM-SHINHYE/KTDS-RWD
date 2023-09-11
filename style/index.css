@@ -1,1 +1,18 @@
 /* index.css */
+/* @들어가는 건 at rules*/
+/* import 통해 하나로 merge */
+@import url("./normalize.css");
+@import url("./base.css");
+@import url("./theme.css");
+@import url("./style.css");
+
+/* import하는 공간에서 코드를 짜는건 ㄴㄴ */
+.appHeader{
+    /* 여기서 white변수에 담긴 컬러를 재지정함 */
+    /* --white: #ff0; */
+    /* --size: 200px; */
+    background-color: var(--primary-color);
+    color: var(--white);
+    /* width: var(--size);
+    height: var(--size); */
+}
