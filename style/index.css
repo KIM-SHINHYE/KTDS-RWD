@@ -4,9 +4,35 @@
 @import url("./normalize.css");
 @import url("./base.css");
 @import url("./theme.css");
-@import url("./style.css");
+/* @import url("./style.css"); */
+
+/* *를 통해 리셋하는 건 좋지 못함 */
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* 이걸 sr-only로 빼서 클래스로 주는게 좋음 */
+/* legend */
+/* 숨김 컨텐츠 */
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+    /* 아래처럼 하게되면 이슈발생 */
+    /* top: 9999px;
+    left: -11111px; */
+}
 
 /* import하는 공간에서 코드를 짜는건 ㄴㄴ */
+/* 헤더 */
 .appHeader{
     /* 여기서 white변수에 담긴 컬러를 재지정함 */
     /* --white: #ff0; */
@@ -15,4 +41,43 @@
     color: var(--white);
     /* width: var(--size);
     height: var(--size); */
+    display: flex;
+    flex-flow: row wrap;
+    padding: var(--spacing-base) var(--spacing-lg);
+}
+/* 로고 */
+.logo{
+    width: 100%;
+
+}
+.logo__link{
+    /* a태그는 inline요소이기 때문에 block으로 처리하지 않으면 링크표시가 안됨 */
+    display: block;
+    width: 12.75rem;
+    /* width: 204px/16(root); */
+    height: 3.75rem;
+    background-image: url("../images/webcafe-logo@2x.png");
+    /* 가로 긴 축에 맞출거면 cover, 세로 긴 축에 맞출거면 contain */
+    /* 4배 큰 이미지여도 1배로 보여주면 성능낭비 */
+    background-size:cover;
+}
+
+/* 멤버 서비스 */
+.memberOnly{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    order: -1;
+}
+
+/* 검색 폼 */
+.searchForm{
+    width: 100%;
+}
+
+
+
+/* a ccessbilil y => a 11글자 y */
+.a11y{
+
 }
