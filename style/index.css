@@ -13,6 +13,13 @@
     border: 0;
 }
 
+/* 컨테이너 마크업 */
+.container {
+    min-width: 16.25rem;
+    /* min-width: 260/16;. 더 줄어드는 걸 막음 */
+
+}
+
 /* 이걸 sr-only로 빼서 클래스로 주는게 좋음 */
 /* legend */
 /* 숨김 컨텐츠 */
@@ -75,6 +82,31 @@
     width: 100%;
 }
 
+.searchForm__group {
+    display: flex;
+    gap: var(--spacing-sm);
+    
+}
+
+/* 화면을 줄이게 되면 다시 노란색이 나오게 됨 =>  */
+.formInput {
+    background-color: yellow;
+    flex-grow: 1;
+
+    /* &__input{
+        width:100%;
+    } */
+}
+
+/* 아래처럼 하고 나면 yellow영역이 사라짐, 주석처리하고 나면 늘어난 영역이 노란색으로 보임 */
+.formInput__input {
+    width: 100%;
+}
+
+.searchForm .button{
+    /* 공백문자 줄바꿈 금지 -> "검색어를 입력하세요"가 줄바꿈이 되지 않으니 노란색이 사라지지 않게 됨 */
+    white-space: nowrap;
+}
 
 
 /* a ccessbilil y => a 11글자 y */
