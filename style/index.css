@@ -148,6 +148,70 @@ body {
     .searchForm__group .formInput {
       flex-grow: 1;
     }
+
+    /* 모바일 메인 메뉴 제어 버튼 */
+  .buttonWrapper {
+    position: absolute;
+    right: var(--spacing-md);
+    top: 3.5rem;
+    overflow: hidden;
+    padding: 0.25rem;
+  }
+
+  .button--burger {
+    position: relative;
+    display: block;
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+  .button--burger:focus {
+    outline-offset: 2px;
+  }
+
+  /* 모바일 디바이스일 때 햄버거 모양 만드는거
+  absolute를 줬기 떄문에 부모에 rel주고. 부모 기준으로 각각을 top배치. bottom을 top100%배치를 했는데, 부모의 100%위치에 위치시킨다는거, 그렇게 되면 버튼밖으로 버거의 bottom이 나가게 되는데, 그걸 Y축 방향으로 -100% transform하겠다는 건 걔 크기만큼 끌어올리겠다는거
+   */
+  .button--burgerBarTop,
+  .button--burgerBarMiddle,
+  .button--burgerBarBottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: var(--white);
+    border-radius: 1.5rem;
+    transition: all 400ms; /*부드럽게 처리*/
+  }
+
+  .button--burgerBarTop {
+    top: 0;
+  }
+
+  .button--burgerBarMiddle {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .button--burgerBarBottom {
+    top: 100%;
+    transform: translateY(-100%);
+  }
+
+  .button--burger.is--active .button--burgerBarTop {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    /* 3줄이 있었는데 X로 만들기 위해서 돌림, 중간으로 돌려놓고 그다음 X를 만드느라 top:50%이 먼저나옴 */
+  }
+
+  .button--burger.is--active .button--burgerBarMiddle {
+    transform: translate(-120%, -50%);
+  }
+
+  .button--burger.is--active .button--burgerBarBottom {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
   }
 
 /* 데스크탑 디바이스 */
