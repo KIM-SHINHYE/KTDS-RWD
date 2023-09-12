@@ -149,3 +149,57 @@ body {
       flex-grow: 1;
     }
   }
+
+  /* 데스크탑 */
+  @media(min-width: 768px){
+    .appHeader{
+        background-color: yellow;
+        display: grid;
+        /* 2행 2열 */
+
+        grid-template-columns: 1fr 2fr; /*1/3, 2/3*/
+        /* grid-template-columns: 50% 50%; */
+        grid-template-rows: 50px 50px; 
+        /*높이를 고정시키지 않았기 떄문에 컨텐츠 크기만큼만 넓어짐*/
+        /* "" 이거 하나가 1행임, 열과 열사이는 스페이스로 구분 */
+        /* logo이름을 가진 클래스가 두 개 행에 걸쳐 나타나는거 */
+        grid-template-areas: 
+        "logo member"
+        "logo search";
+    }
+    /* 시작과 끝나는 지점의 라인이름을 써줘야 함 */
+    .logo{
+        /* 방법1 */
+        /* grid-row-start:1;
+        grid-column-start: 1;
+        grid-row-end: 3;
+        grid-column-end: 2; */
+
+        /* 방법2 */
+        /*1에서 시작해서 3에서 끝남*/
+        /* grid-row: 1/3;  */
+        /*1에서 시작해서 2에서 끝남*/
+        /* grid-column: 1/2;  */
+
+        /* 방법3 */
+        /*row-start/column-start/row-end/column-end*/
+
+        /* grid-area: 1/1/3/2;  */
+        grid-area: logo;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .memberOnly{
+        grid-area: member;
+    }
+    .searchForm{
+        grid-area: search;
+        /* 인라인 축은 justify */
+        justify-self: end ;
+        align-self: end;
+    }
+    /*  grid-area: 이름; 이름 알려주고 어디 위치에 있는지 알려줘야 함 */
+  }
+
+  
