@@ -216,6 +216,17 @@ body {
 
 /* 데스크탑 디바이스 */
 @media (min-width: 768px) {
+    /* 데스크탑 공통 */
+    .appHeader, .menu__list, .appMain, .appFooter{
+        max-width: var(--container-width);
+                /* 이 조건이 동작한다는 건 지금은 768이상일 때 동작하니 768 ~ 1024가 되는 거 */
+        /* width: 1000px; */
+        /* auto margin, flex => 반응형 */
+        /* 만약 각각 left만 쓴다던지(오른쪽 정렬), right만 쓴다던지(왼쪽 정렬) 하면 정렬이 달라짐, 대신 width값 필요 */
+        margin-left: auto;
+        margin-right: auto;
+
+    }
     /* 데스크탑 헤더 */
     .appHeader {
       display: grid;
@@ -247,6 +258,49 @@ body {
     /* 데스크탑 메인 메뉴 제어 버튼 */
     .buttonWrapper {
       display: none;
+    }
+
+    /* 데스크탑 메인 메뉴 */
+    /* 내가 작성 */
+    /* .menu{
+    }
+    .menu__list{
+        --spacing-xl:60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 55px;
+        background-color: #988574;
+        width: 100%;
+        height: var(--spacing-xl);
+    }
+    .menu__item{}
+    .menu__link{
+        font-size: var(--text-base);
+        color: #fff;
+        text-shadow: 2px -2px #4b4848;
+    } */
+
+    /* 제일 바깥이기 때문에 너비가 변경되면 안됨 */
+    .menu{
+        background-color: var(--secondary-color);
+        color: var(--white);
+    }
+    .menu__list{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        
+    }
+    .menu__item{
+        padding: 0.5rem 0;
+    }
+    .menu__link{
+        /* padding이 먹히게 하기 위해 display: block로 함, 링크 영역에 padding을 주는 이유가 클릭할 영역을 넓히기 위함 */
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding: 1rem 0;
     }
   }
   
