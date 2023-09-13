@@ -1,0 +1,35 @@
+body{
+    margin: 50px;
+}
+.box{
+    border: 1px solid blue;
+    /* padding: 20px; */
+    /* height: 100px; */
+    /* overflow: hidden; */
+    /* float이슈 해결 위한 디스플레이설정 */
+    display: flow-root;
+}
+.inner_box1{
+    background-color: yellow;
+    /* left한 순간 box2가 떠있는거고, 2번 박스와 같은 선상에 들어가 있음 => 부모도 자식 하나를 잃어버려서 높이가 줄어듦
+    position과 다른 점은 텍스트까지 가리지 않는 다는 점
+    inline-flex는 텍스트처럼 사용되어짐, 그래서 float를 쓰면 해당 텍스트가 있는 영역위엔 차지되지 않고 없는 공간에서 쓰이게 됨
+    나머지 박스들은 normal  flow
+    박스에 너비를 지정하지 않았기 때문에 부모 너비만큼 넓어진거, 근데 텍스트 영역이 있으니 그 부분은 차지하지 않고 나머지 공간에서 부모 너비만큼 넓어지는거  */
+    float: left;
+}
+.inner_box2{
+    background-color: pink;
+    float: left;
+
+}
+.inner_box3{
+    background-color: lightgreen;
+    float: left;
+
+}
+.inner_box4{
+    background-color: salmon;
+    float: left;
+
+}

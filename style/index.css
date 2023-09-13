@@ -129,6 +129,70 @@ body {
     gap: var(--spacing-xs);
   }
 
+  /* 공통 메인 콘텐츠 제목 */
+.sprite {
+  background: url(./../images/sprite_main.png) no-repeat;
+  padding-left: 4.0625rem;
+  height: 3.75rem;
+}
+
+.spriteBook {
+  background-position: 0 0;
+}
+
+.spriteNews {
+  background-position: 0 -230px;
+}
+
+.spriteBoard {
+  background-position: 0 -115px;
+}
+
+.spriteFavorite {
+  background-position: 0 -345px;
+}
+
+.spriteTwitter {
+  background-position: 0 -460px;
+}
+
+.accentBook {
+  color: var(--accent-book);
+}
+.accentNews {
+  color: var(--accent-news);
+}
+.accentBoard {
+  color: var(--accent-board);
+}
+.accentFavorite {
+  color: var(--accent-favorite);
+}
+.accentTwitter {
+  color: var(--accent-twitter);
+}
+
+.appMain [class*="__title"] {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  margin-bottom: var(--spacing-base);
+}
+
+.appMain [class*="__koTitle"] {
+  font-size: var(--text-md);
+}
+
+.appMain [class*="__enTitle"] {
+  font-weight: 400;
+  font-size: var(--text-base);
+}
+
+.appMain [class*="__summary"] {
+  line-height: 1.5;
+  margin-top: var(--spacing-base);
+}
+
   /* 공통 메인 메뉴 */
   /* 중단점이 많다면 유지보수가 어려움, 공통을 작업한다면 모바일도 데스크탑에도 영향, 따라서 데스크탑모드에서 하나씩 없애나가는 형식 */
   .menu__list{
@@ -151,12 +215,12 @@ body {
 
   /* 공통 메인 콘텐츠 */
 .appMain section{
-  
+
   /* height: 250px; */
   
 }
   .book{
-    background-color: yellow;
+    /* background-color: yellow; */
 /* height: 500px !important; */
     /* 위의 두 속성은 구분하기 쉽게 부여한거, 500이 안먹히고, 250이 먹힘 -> 선택자 파워에서 밀림
     section요소는 한 번사용했기때문에 10점+ 클래스 선택자 1점 => 11점, .book은 1점 그래서 250이 먹힘, !important를 통해 
@@ -165,23 +229,69 @@ body {
   }
 
   .news{
-    background-color: pink;
+    /* background-color: pink; */
     /* grid-area: news; */
   }
 
   .board{
-    background-color: skyblue;
+    /* background-color: skyblue; */
     /* grid-area: board; */
   }
 
   .twitter{
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
     /* grid-area:twitter; */
   }
 
   .favorite{
-    background-color: salmon;
+    /* background-color: salmon; */
     /* grid-area: favorite; */
+  }
+
+/* 높이가 16일 때 알아서 9로 맞춰줌 */
+  .news__videoContainer .iframeWrapper {
+    /* 가로, 세로 비율 지정!!, 이미지 처리에도 사용, 부모 너비만 알려주면 세로는 알아서  */
+    aspect-ratio: 16/9;
+  }
+
+  .news__videoContainer iframe{
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 공통 트위터 */
+  .twitter__container{
+    background-color: yellow;
+    /* 색깔 칠해가면서 영역확인하기 */
+    display: flow-root; /*부모가 높이를 잃어버렸더라도 안전하게 동작. 만약 데이터가 있을 때를 기준으로 뭔갈 만들었다가 데이터가 없게 됐을 때 레이아웃이 깨질 수 있는걸 방지*/
+  }
+
+  .twitter__userInfo{
+    /* flex는 기본적으로 block, inline-flex는 flex와 같으나 inline인점만 다름 */
+    display: inline-flex;
+    background-color: aqua;
+  }
+
+  /* 이미지가 포함된 figure 태그를 이용해 왼, 오보낼거(가운데는 없음)
+  userInfo하고는 영역이 겹치지 않음, 만약 막지 않는다면 같은 선상에 둘 수 있음=> inline처리
+  */
+  .twitter__userProfile{
+    width: 20%;
+    float: right;
+    shape-outside: circle(50%);
+    /* float속성이 있는 곳에 shape-outside효과 줄 수 있음, 글자가 원 주변으로 흐르게 됨 */
+    /* polygon으로 점을 찍어서 그 라인따라서 글자를 흐르게 할 수도*/
+  }
+
+  .twitter__userProfileImage{
+    /* 반듯한 원으로 만들고 싶다면, width, height를 주던지, 종횡비 1:1비율로 줘야 함*/
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    /* cover는 이미지의 가로비율에 맞춤, contain은 세로비율에 맞춤 */
+    object-fit: cover;
+    /* 이미지 위치 정할 수 있음 */
+    object-position:30% 40%
+    
   }
 
   /* 모바일 디바이스 */
@@ -402,7 +512,7 @@ body {
   grid-template-areas: 
   /* .은 해당 컬럼을 비워두겠다는 것 */
   "news news news news news news news news news news news news"
-  "book book book book . favorite favorite favorite twitter twitter twitter twitter"
+  "book book book book . twitter twitter twitter twitter favorite favorite favorite"
   "book book book book . board board board board board board board"
   ;
 

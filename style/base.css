@@ -28,7 +28,7 @@ body {
   background-color: #fff;
 }
 
-/* 유연한 미디어 */
+/* 유연한 미디어 => 여기에 적용시켜놨기 때문에 따로 안지정해놔도 됐던 것 */
 img {
   max-width: 100%;
   height: auto;
