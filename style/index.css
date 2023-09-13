@@ -151,12 +151,13 @@ body {
 
   /* 공통 메인 콘텐츠 */
 .appMain section{
-  height: 250px;
+  
+  /* height: 250px; */
   
 }
   .book{
     background-color: yellow;
-height: 500px !important;
+/* height: 500px !important; */
     /* 위의 두 속성은 구분하기 쉽게 부여한거, 500이 안먹히고, 250이 먹힘 -> 선택자 파워에서 밀림
     section요소는 한 번사용했기때문에 10점+ 클래스 선택자 1점 => 11점, .book은 1점 그래서 250이 먹힘, !important를 통해 
     id는 100, 클래스는 10점, book클래스는 appMain클래스 안의 section이기도 하지만, 두 번 부른게 더 파워가 쎔 */
