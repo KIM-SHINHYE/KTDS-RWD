@@ -193,106 +193,57 @@ body {
   margin-top: var(--spacing-base);
 }
 
-  /* 공통 메인 메뉴 */
-  /* 중단점이 많다면 유지보수가 어려움, 공통을 작업한다면 모바일도 데스크탑에도 영향, 따라서 공통으로 먼저 정의를 한 후, 모바일 -> 데스크탑모드에서 하나씩 없애나가는 형식 */
-  .menu__list{
-    background: #ff0;
-    padding:var(--spacing-lg);
-  }
-
-  .menu__item{
-    border-bottom: 1px solid #121212;
-  }
-
-  .menu__link{
-    /* link는 a태그이고 이건 인라인 요소, 따라서 padding을 주려면 블록의 성격을 가져야 함
-    bfc(block format context) 이런 식으로 블록형으로 바꿔줘야 함(단, 수평 패딩은 먹힘) */
-    display: block;
-    padding: var(--spacing-xs) 0;
-    font-size: 1.15rem;
-    font-weight: 500;
-  }
-
-  /* 공통 메인 콘텐츠 */
-.appMain section{
-
-  /* height: 250px; */
-  
+/* 공통 추천서적 */
+.book__cover {
+  /* background-color: pink; */
+  width: 60%;
+  text-align: center;
+  /* width가 있을 떄 margin: 0 auto; 사용가능 */
+  margin: 0 auto;
 }
-  .book{
-    /* background-color: yellow; */
-/* height: 500px !important; */
-    /* 위의 두 속성은 구분하기 쉽게 부여한거, 500이 안먹히고, 250이 먹힘 -> 선택자 파워에서 밀림
-    section요소는 한 번사용했기때문에 10점+ 클래스 선택자 1점 => 11점, .book은 1점 그래서 250이 먹힘, !important를 통해 
-    id는 100, 클래스는 10점, book클래스는 appMain클래스 안의 section이기도 하지만, 두 번 부른게 더 파워가 쎔 */
-    /* grid-area: book; */
-  }
 
-  .news{
-    /* background-color: pink; */
-    /* grid-area: news; */
-  }
+/* 비트맵 이미지는 확대하면 깨지기때문에 width를 주는게 아닌 max-width를 줘야 함 */
+.book__coverImage{
+  /* width: 100%; */
+}
 
-  .board{
-    /* background-color: skyblue; */
-    /* grid-area: board; */
-  }
+.book__coverCaption {
+  margin-top: var(--spacing-sm);
+}
 
-  .twitter{
-    /* background-color: lightgreen; */
-    /* grid-area:twitter; */
-  }
+.book__info {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
 
-  .favorite{
-    /* background-color: salmon; */
-    /* grid-area: favorite; */
-  }
+.ratingStar {
+  font-size: var(--text-lg);
+}
 
-/* 높이가 16일 때 알아서 9로 맞춰줌 */
-  .news__videoContainer .iframeWrapper {
-    /* 가로, 세로 비율 지정!!, 이미지 처리에도 사용, 비율만 알려주면 알아서 알맞은 너비, 높이 셋팅됨  */
-    aspect-ratio: 16/9;
-  }
+/* 공통 새소식 */
+.iframeWrapper {
+  position: relative;
+  padding-top: 56.25%;
+}
 
-  .news__videoContainer iframe{
-    width: 100%;
-    height: 100%;
-  }
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  /* absolute가 되면 높이를 가지지 않음, 직접적으로 height를 줄 수 없어서 aset-ratio를 이용했음, 그치만 padding을 줘도 높이를 늘릴 수 있음(너비를 알 경우 가능) */
+}
 
-  /* 공통 트위터 */
-  .twitter__container{
-    background-color: yellow;
-    /* 색깔 칠해가면서 영역확인하기 */
-    display: flow-root; /*부모에게 부여, 부모가 높이를 잃어버렸더라도 안전하게 동작. 만약 데이터가 있을 때를 기준으로 뭔갈 만들었다가 데이터가 없게 됐을 때 레이아웃이 깨질 수 있는걸 방지*/
-  }
+.news__date {
+  display: block;
+  text-align: right;
+  margin-top: var(--spacing-sm);
+}
 
-  .twitter__userInfo{
-    /* flex는 기본적으로 block, inline-flex는 flex와 같으나 inline인점만 다름 */
-    display: inline-flex;
-    background-color: aqua;
-  }
-
-  /* 이미지가 포함된 figure 태그를 float를 이용해 왼, 오보낼거(가운데는 없음)
-  userInfo하고는 영역이 겹치지 않음, 만약 영역을 막지 않는다면 이미지를 user-info와 같은 선상에 둘 수 있음=> inline-flex처리
-  */
-  .twitter__userProfile{
-    width: 20%;
-    float: right;
-    shape-outside: circle(50%);
-    /* float속성이 있는 곳에 shape-outside효과 줄 수 있음, 글자가 원 주변으로 흐르게 됨 */
-    /* polygon으로 점을 찍어서 그 라인따라서 글자를 흐르게 할 수도*/
-  }
-
-  .twitter__userProfileImage{
-    /* 반듯한 원으로 만들고 싶다면, width, height를 주던지, 종횡비 1:1비율로 줘야 함*/
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    /* cover는 이미지의 가로비율에 맞춤, contain은 세로비율에 맞춤 */
-    object-fit: cover;
-    /* 이미지 위치 정할 수 있음 */
-    object-position:30% 40%
-    
-  }
 
   /* 모바일 디바이스 */
   /* 여기서 320보다 작게되면 스타일이 안먹힘, 따라서 공통을 먼저 정의 후 모바일(small) 재정의 태블릿(medium) -> 데스크탑(large) 이런 식으로 올라가야 함 */
