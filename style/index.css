@@ -307,6 +307,33 @@ iframe {
   font-size: var(--text-sm);
 }
 
+/* 공통 트위터 */
+.twitter__userInfo {
+  display: inline-flex;
+}
+
+.twitter__userProfile {
+  float: right;
+  shape-outside: circle(50%);
+  shape-margin: 1em;
+  /* 최소크기, 중간, 최대크기 */
+  width: clamp(60px, 20%, 80px);
+  aspect-ratio: 1/1;
+}
+
+.twitter__userProfileImage {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 100%;
+}
+
+/* 간격 */
+.twitter__summary {
+  margin: var(--spacing-sm) 0 var(--spacing-xs) 0;
+}
+
   /* 모바일 디바이스 */
   /* 여기서 320보다 작게되면 스타일이 안먹힘, 따라서 공통을 먼저 정의 후 모바일(small) 재정의 태블릿(medium) -> 데스크탑(large) 이런 식으로 올라가야 함 */
 @media (min-width: 320px) and (max-width: 767px) {
