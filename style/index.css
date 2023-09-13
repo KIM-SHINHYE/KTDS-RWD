@@ -233,7 +233,30 @@ body {
     top: 50%;
     transform: translateY(-50%) rotate(-45deg);
   }
+
+  /* 모바일 메인 메뉴 */
+  .menu__list{
+    background-color: var(--accent-opacity-color);
+    width: 70vw;
+    height: 100vh;
+    /* body는 높이를 가지지 않으므로 뷰포트기준으로 해야함*/
+    position: fixed;
+    top: 0;
+    /* 어딘가에 배치를 해뒀다가 다시 나타나게 하는건 성능에 좋지 못함. 즉. left:-200px이런거처럼. 움직이고 다시 그리고 하는 걸 반복. 다시 그리지 않기 위해 TRANSFORM */
+    left: 0;
+    /* 뒤 배경이 흐릿 */
+    backdrop-filter: blur(4px);
+    transform: translateX(-150%);
+    /* 스르륵 나오게 하는 효과 */
+    transition: all 400ms;
   }
+
+  /* 한칸 띄워져 있으면 상속 */
+  .is--active.menu__list{
+    /* 한쪽에 바쪄있던걸 다시 돌리라는거 */
+    transform: translateX(0);
+  }
+}
 
 /* 데스크탑 디바이스 */
 @media (min-width: 768px) {
