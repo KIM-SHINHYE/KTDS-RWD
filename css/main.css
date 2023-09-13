@@ -238,7 +238,9 @@ iframe {
 }
 
 .board__link {
+  /* 상대연산, 100%크기에서 날짜들어갈 공간을 뺸거, 그 공간을 넘어가는 순간 text-overflow작동 */
   width: calc(100% - 6rem);
+  /* 아래 3개의 속성은 한 세트 */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
