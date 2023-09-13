@@ -334,6 +334,24 @@ iframe {
   margin: var(--spacing-sm) 0 var(--spacing-xs) 0;
 }
 
+/* 공통 푸터 */
+.appFooter {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-base);
+}
+
+.address {
+  font-style: normal;
+}
+.copyright {
+  /* 원본 크기와 동일 */
+  font-size: 100%;
+}
+
   /* 모바일 디바이스 */
   /* 여기서 320보다 작게되면 스타일이 안먹힘, 따라서 공통을 먼저 정의 후 모바일(small) 재정의 태블릿(medium) -> 데스크탑(large) 이런 식으로 올라가야 함 */
 @media (min-width: 320px) and (max-width: 767px) {
@@ -442,12 +460,18 @@ iframe {
     /* 한쪽에 바쪄있던걸 다시 돌리라는거 */
     transform: translateX(0);
   }
+
+    /* 모바일 푸터 */
+    .address {
+      display: flex;
+      flex-flow: column nowrap;
+    }
 }
 
 /* 데스크탑 디바이스 */
 @media (min-width: 768px) {
     /* 데스크탑 공통 */
-    .appHeader, .menu__list, .appMain, .appFooter{
+    .appHeader, .menu__list, .appMain{
         max-width: var(--container-width);
                 /* 이 조건이 동작한다는 건 지금은 768이상일 때 동작하니 768 ~ 1024가 되는 거 */
         /* width: 1000px; */
@@ -593,6 +617,11 @@ iframe {
       grid-area:board;
 
     }
+
+    /* 데스크탑 푸터 */
+  .appFooter {
+    align-items: center;
+  }
 
   }
   
